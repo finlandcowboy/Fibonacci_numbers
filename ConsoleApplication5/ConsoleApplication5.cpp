@@ -55,12 +55,29 @@ public:
 	}
 };
 
+class Fibonacci4 final {
+public:
+	static int get(int n) {
+		assert(n >= 0);
+		if (n <= 1) {
+			return n;
+		}
+		int previous = 0;
+		int current = 1;
+		for (int i = 2; i <= n; i++) {
+			int new_current = previous + current;
+			previous = current;
+			current = new_current;
+		}
+		return current;
+	}
+};
 
 int main(int argc, char** argv) {
 
 	int n;
 	std::cin >> n;
-	std::cout << Fibonacci3::get(n) << std::endl;
+	std::cout << Fibonacci4::get(n) << std::endl;
 	unsigned int start = clock();
 	std::cout << start / 1000;
 	return 0;
